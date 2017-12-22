@@ -38,3 +38,5 @@ async def on_message(message):
 			await client.edit_message(message, 'PONG! It took {} miliseconds, or {} seconds to respond!'.format(latency.microseconds // 1000, latency.microseconds / 1000000))
 		else:
       await client.edit_message(message, 'PONG! It took {} miliseconds to respond!'.format(latency.microseconds // 1000))
+
+client.run(TOKEN)
