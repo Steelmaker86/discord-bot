@@ -28,8 +28,11 @@ async def on_message(message):
 		print('Command: {0} with arguments: {1}'.format(cmd_string, arguments))
 	command = message.content
 	if command.startswith(prefix + "shutdown"):
-		await reply(channel, 'turning off...')
-		await client.logout()
+    if message.author != creator:
+      return
+    else:
+      await reply(channel, 'turning off...')
+      await client.logout()
 
 
 client.run(TOKEN)
