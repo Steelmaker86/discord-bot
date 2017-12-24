@@ -1,6 +1,6 @@
 Import discord
 Import asyncio
-
+import time
 
 client = discord.Client()
 
@@ -18,7 +18,7 @@ async def on_ready():
 	print('Startup at: ' + startup)
 	embed.clear_fields()
   
-  @client.even
+  @client.event
   arguments = ' '.join(message.content.strip().split(' ')[1:])
 async def on_message(message):
 	prefix = '-'
@@ -30,13 +30,6 @@ async def on_message(message):
 	if command.startswith(prefix + "shutdown"):
 		await reply(channel, 'turning off...')
 		await client.logout()
-	elif command.startswith(prefix + 'ping'):
-		ts = message.timestamp
-		new_msg = await client.send_message(channel, 'PONG!')
-		latency = new_msg.edited_timestamp - ts
-		if latency.microseconds >= 1000000:
-			await client.edit_message(message, 'PONG! It took {} miliseconds, or {} seconds to respond!'.format(latency.microseconds // 1000, latency.microseconds / 1000000))
-		else:
-      await client.edit_message(message, 'PONG! It took {} miliseconds to respond!'.format(latency.microseconds // 1000))
+
 
 client.run(TOKEN)
