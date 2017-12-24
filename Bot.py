@@ -1,7 +1,7 @@
 Import discord
 Import asyncio
 import time
-
+Import config
 client = discord.Client()
 
 def reply(x):
@@ -28,6 +28,8 @@ async def on_message(message):
 		print('Command: {0} with arguments: {1}'.format(cmd_string, arguments))
 	command = message.content
 	if command.startswith(prefix + "shutdown"):
+    if message.author != config.creator:
+      
 		await reply(channel, 'turning off...')
 		await client.logout()
 
