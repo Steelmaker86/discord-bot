@@ -1,7 +1,7 @@
-Import discord
-Import asyncio
+import discord
+import asyncio
 import time
-Import config
+import config
 client = discord.Client()
 
 def reply(x):
@@ -21,7 +21,7 @@ async def on_ready():
   @client.event
   arguments = ' '.join(message.content.strip().split(' ')[1:])
 async def on_message(message):
-	prefix = '-'
+	prefix = config.prefix
 	cmd_string_bool = message.content.startswith(prefix)
 	cmd_string = message.content
 	if cmd_string_bool:
