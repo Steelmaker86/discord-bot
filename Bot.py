@@ -29,8 +29,9 @@ async def on_message(message):
 	command = message.content
 	if command.startswith(prefix + "shutdown"):
     if message.author != config.creator:
-      
-		await reply(channel, 'turning off...')
+      return
+    else:
+        await reply(channel, 'turning off...')
 		await client.logout()
 
 
